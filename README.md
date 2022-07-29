@@ -29,3 +29,14 @@ pub async fn get_next_user(&self) -> Vec<Comment> {}
 #[ext_sql(DB, "select * from updates where due_at = #{rbatis::DateTimeUtc::now()})]
 pub async fn get_pending_updates() -> Vec<Update> {}
 ```
+
+## Usage
+
+To use this crate, add it to your dependencies:
+
+```toml
+# Add the db type your going to use, since the macro needs to convert the parameter markers to the corresponding dialect
+rbatis-macro-ext = { git = "https://github.com/swip3798/rbatis-macro-ext", features = ["mysql"]}
+```
+
+As for database support, it supports SQLite, MySQL and Postgres. Other than that it might work, especially with all the MySQL deriviates, since they probably also use the `?` as the parameter marker. If a database doesn't work, let me know, I simply lack the knowledge and time to test this out with every single DBMS.
