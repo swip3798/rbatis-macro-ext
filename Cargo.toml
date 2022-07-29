@@ -1,0 +1,26 @@
+[package]
+name = "rbatis-macro-ext"
+version = "0.1.0"
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[lib]
+proc-macro = true
+
+[dependencies]
+syn = "1.0"
+quote = "1.0"
+proc-macro2 = "1.0"
+regex = "1"
+
+[features]
+default = []
+sqlite = ["question-marker"]
+mysql = ["question-marker"]
+maria-db = ["question-marker"]
+ti-db = ["question-marker"]
+cockroach-db = ["question-marker"]
+postgres = ["dollar-marker"]
+question-marker = []
+dollar-marker = []
