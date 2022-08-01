@@ -103,7 +103,6 @@ pub(crate) fn impl_macro_sql(target_fn: &ItemFn, args: &AttributeArgs) -> TokenS
 }
 
 fn generate_args(sql: &str) -> proc_macro2::TokenStream {
-    println!("{sql}");
     let mut sql_args_gen = quote! {};
     let arg_regex = Regex::new(r"#\{(.*)\}").expect("Arg regex broken, please open github issue");
     for cap in arg_regex.captures_iter(sql) {
