@@ -121,7 +121,7 @@ fn generate_args(sql: &str) -> proc_macro2::TokenStream {
 fn convert_sql(sql: &str) -> String {
     let marker_replace_regex =
         Regex::new(r"#\{.*?\}").expect("Marker regex broken, please open github issue");
-    let total = marker_replace_regex.captures(sql).iter().count();
+    let total = marker_replace_regex.captures_iter(sql).count();
     let mut new_sql = sql.to_string();
     for i in 1..=total {
         new_sql = marker_replace_regex
